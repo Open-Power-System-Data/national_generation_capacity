@@ -1,0 +1,39 @@
+12_1176011	Electrical capacity, main activity producers - Combustible Fuels	Fossil fuels
+12_1176012	Electrical capacity, autoproducers - Combustible Fuels	Fossil fuels
+12_1176031	Electrical capacity, main activity producers - Nuclear	Nuclear
+12_1176032	Electrical capacity, autoproducers - Nuclear	Nuclear
+12_1176051	Electrical capacity, main activity producers - Hydro	Hydro
+12_1176052	Electrical capacity, autoproducers - Hydro	Hydro
+12_1176061	Electrical capacity, main activity producers - Mixed plants	
+12_1176071	Net electrical capacity, main activity producers - Pure Pumped Hydro	Pumped storage
+12_1176072	Net electrical capacity, autoproducers - Pure Pumped Hydro	Pumped storage
+12_1176081	Electrical capacity, main activity producers - Geothermal	Geothermal
+12_1176082	Electrical capacity, autoproducers - Geothermal	Geothermal
+12_1176083	Net maximum capacity - Geothermal	
+12_1176091	Electrical capacity, main activity producers - Wind	Wind
+12_1176092	Electrical capacity, autoproducers - Wind	Wind
+12_1176101	Electrical capacity, main activity producers - Other Sources	
+12_1176102	Electrical capacity, autoproducers - Other Sources	
+12_1176111	Electrical capacity, main activity producers - Steam
+12_1176112	Electrical capacity, autoproducers - Steam
+12_1176121	Electrical capacity, main activity producers - Gas Turbine
+12_1176122	Electrical capacity, autoproducers - Gas Turbine
+12_1176131	Electrical capacity, main activity producers - Combined Cycle
+12_1176132	Electrical capacity, autoproducers - Combined Cycle
+12_1176141	Electrical capacity, main activity producers - Internal Combustion
+12_1176142	Electrical capacity, autoproducers - Internal Combustion
+12_117615	Net maximum capacity - Hydro <1 MW	
+12_117616	Net maximum capacity - Hydro >= 1 MW and <= 10 MW	
+12_117617	Net maximum capacity - Hydro 10 MW and over	
+12_1176233	Net maximum capacity - Solar Photovoltaic	Photovoltaics
+12_1176243	Net maximum capacity - Solar Thermal Electric	Concentrated solar power
+12_1176253	Net maximum capacity - Municipal Wastes	Non-renewable waste
+12_1176263	Net maximum capacity - Wood/Wood Wastes/Other Solid Wastes	Other bioenergy and renewable waste
+12_1176273	Net maximum capacity - Biogases	Biomass and biogas
+12_1176283	Net maximum capacity - Industrial Wastes (non-renewable)	Non-renewable waste
+12_1176301	Electrical capacity, main activity producers - Tide, wave and ocean	Marine
+12_1176302	Electrical capacity, autoproducers - Tide, wave and ocean	Marine
+12_1176303	Net maximum capacity - Tide, Wave, Ocean	
+12_1176343	Net maximum capacity - Liquid Biofuels	Biomass and biogas
+12_1176401	Electrical capacity, main activity producers - Other Type of Generation	
+12_1176402	Electrical capacity, autoproducers - Other Type of Generation	
