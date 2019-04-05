@@ -42,16 +42,16 @@ resources:
     - name: national_generation_capacity
       profile: tabular-data-resource
       title: Statistics of national generation capacities
-      bytes: 281820
-      hash: 0d17e3ad7edb2b1d64e26df11f75d358d86623744c0b24e4fa261bf36fc27717
+      bytes: 281480
+      hash: eaef1236b93c9ee1458cc995f74aed6346911a36aa964aec8597c45b2809d068
       path: national_generation_capacity.xlsx
       format: xlsx
       mediatype: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
     - name: national_generation_capacity_stacked
       profile: tabular-data-resource
       title: Statistics of national generation capacities
-      bytes: 3483593
-      hash: 2ba999a62ea12b5daf4523b298fb7a3998fe74f9aa85f9d6acc35d62f5d0e14f
+      bytes: 4219316
+      hash: b8aa71c64711e4586f51586a248e38e031c9a82dcfaf4b77401c1366944f9a14
       path: national_generation_capacity_stacked.csv
       format: csv
       mediatype: text/csv
