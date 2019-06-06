@@ -1,3 +1,5 @@
 .ipynb_checkpoints/
 output/
 original_data/
+download
+__pycache__
