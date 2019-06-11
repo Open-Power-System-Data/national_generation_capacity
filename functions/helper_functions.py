@@ -3,17 +3,8 @@ import os.path
 import urllib.parse
 import urllib.request
 import zipfile
-import logging
+from . import logger
 
-
-
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    datefmt='%d %b %Y %H:%M:%S'
-)
-
-logger = logging.getLogger()
 
 def get_sha_hash(path, blocksize=65536):
     sha_hasher = hashlib.sha256()
@@ -70,7 +61,16 @@ def downloadandcache(url, filename, source):
             return filepath
     
 
+def unstackData(df):
+    
+    pt = df.pivot_table(values='capacity',
+                        index=['country','year'],
+                        columns='technology')
+    
+    return pt
 
+def restackData(df):
+    return df.stack().reset_index().rename(columns={0: 'capacity'})
 
 def checkIfEmptyAndSetDefault(df, technology, default=0):
     sub_df = df.loc[df['technology'] == technology, 'capacity']

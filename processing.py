@@ -186,7 +186,7 @@ data_eurostat['capacity_definition'] = 'Unknown'
 data_eurostat['type'] = 'Installed capacity in MW'
 
 
-############ENTSOE###############
+############ENTSOE SOAF###############
 
 soafs = [soaf.SoafDataRaw('https://www.entsoe.eu/fileadmin/user_upload/_library/SDC/SOAF/SO_AF_2011_-_2025_.zip',
                           'SO_AF_2011_-_2025_.zip',
@@ -214,7 +214,56 @@ soafs = [soaf.SoafDataRaw('https://www.entsoe.eu/fileadmin/user_upload/_library/
                          2016)]
 
 
-soaf_data = pd.concat([soaf.transformed_df for soaf in soafs])
+soaf_data = pd.concat([s.transformed_df for s in soafs])
 
 # Correct that in the Soaf2015 datatset the year column is 2016 instead of 2015
 soaf_data['year'].replace({2016 : 2015}, inplace=True)
+
+   
+soaf_unstacked = f.unstackData(soaf_data)
+
+soaf_unstacked['Differently categorized solar'] = soaf_unstacked['Solar']
+
+soaf_unstacked['Differently categorized wind'] = soaf_unstacked['Wind']\
+                                                - soaf_unstacked['Offshore']\
+                                                - soaf_unstacked['Onshore']
+
+soaf_unstacked['Differently categorized hydro'] = soaf_unstacked['Hydro']\
+                                                - soaf_unstacked['Run-of-river']\
+                                                - soaf_unstacked['Reservoir including pumped storage']
+                                                
+
+soaf_unstacked['Bioenergy and renewable waste'] = soaf_unstacked['Biomass and biogas']
+                                                
+soaf_unstacked['Differently categorized renewable energy sources'] = (
+                                          soaf_unstacked['renewable']
+                                        - soaf_unstacked['Wind']
+                                        - soaf_unstacked['Solar']
+                                        - soaf_unstacked['Biomass and biogas'])
+
+subtract_fossils_arr = ['Lignite','Hard coal','Oil','Natural gas','Mixed fossil fuels']
+
+soaf_unstacked['Differently categorized fossil fuels'] = soaf_unstacked['Fossil fuels']\
+                                                        - soaf_unstacked[subtract_fossils_arr].sum(axis=1)
+
+
+res_arr = ['Solar','Wind','Bioenergy and renewable waste','Hydro',
+           'Differently categorized renewable energy sources']
+
+soaf_unstacked['Renewable energy sources'] = soaf_unstacked[res_arr].sum(axis=1)
+
+total_arr = ['Renewable energy sources','Fossil fuels','Nuclear',
+             'Other or unspecified energy sources']
+
+soaf_unstacked['Total'] = soaf_unstacked[total_arr].sum(axis=1)
+
+
+
+soaf_data = f.restackData(soaf_unstacked)
+
+soaf_data.loc[soaf_data['capacity'] < 0, 'capacity'] = 0
+
+soaf_data['source'] = 'entsoe SOAF'
+soaf_data['type'] = 'Installed capacity in MW'
+soaf_data['capacity_definition'] = 'Net capacity'
+soaf_data['source_type'] = 'Other association'
