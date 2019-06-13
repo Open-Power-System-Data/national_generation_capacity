@@ -362,3 +362,24 @@ data = data.merge(energy_source_mapping,
                   how='left')
 
 ###############################################################################
+
+sub_table = ['technology','Country (ISO code)', 'Type of data', 'Year',
+             'Source', 'Type of source', 
+             'Capacity definition (net, gross, unknown)', 'capacity']
+
+rename_cols = {'country': 'Country (ISO code)',
+               'type': 'Type of data',
+               'year': 'Year',
+               'source':  'Source',
+               'source_type': 'Type of source',
+               'capacity_definition': 'Capacity definition (net, gross, unknown)'}
+
+
+data.rename(columns=rename_cols, inplace=True)
+
+test = data[sub_table]
+
+data_crosstable = pd.pivot_table(data[sub_table],
+                                 index='technology',
+                                 columns=rename_cols.values(),
+                                 values='capacity')

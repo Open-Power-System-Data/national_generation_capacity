@@ -1,0 +1,40 @@
+name,Level 0,Level 1,Level 2,Level 3,Technology level
+Fossil fuels,0,1,0,0,0
+Lignite,0,0,1,1,1
+Hard coal,0,0,1,1,1
+Oil,0,0,1,1,1
+Natural gas,0,0,1,1,0
+Combined cycle,0,0,0,0,1
+Gas turbine,0,0,0,0,1
+Other and unknown natural gas,0,0,0,0,1
+Differently categorized natural gas,0,0,0,0,1
+Non-renewable waste,0,0,1,1,1
+Mixed fossil fuels,0,0,1,1,1
+Other fossil fuels,0,0,1,1,1
+Differently categorized fossil fuels,0,0,1,1,1
+Nuclear,0,1,1,1,1
+Renewable energy sources,0,1,0,0,0
+Hydro,0,0,1,1,0
+Run-of-river,0,0,0,0,1
+Reservoir,0,0,0,0,1
+Reservoir including pumped storage,0,0,0,0,1
+Pumped storage,0,0,0,0,1
+Pumped storage with natural inflow,0,0,0,0,1
+Differently categorized hydro,0,0,0,0,1
+Wind,0,0,1,1,0
+Onshore,0,0,0,0,1
+Offshore,0,0,0,0,1
+Differently categorized wind,0,0,0,0,1
+Solar,0,0,1,1,0
+Photovoltaics,0,0,0,0,1
+Concentrated solar power,0,0,0,0,1
+Differently categorized solar,0,0,0,0,1
+Geothermal,0,0,1,1,1
+Marine,0,0,1,1,1
+Bioenergy and renewable waste,0,0,1,0,0
+Biomass and biogas,0,0,0,1,1
+Sewage and landfill gas,0,0,0,1,1
+Other bioenergy and renewable waste,0,0,0,1,1
+Differently categorized renewable energy sources,0,0,1,1,1
+Other or unspecified energy sources,0,1,1,1,1
+Total,1,0,0,0,0
