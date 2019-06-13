@@ -267,3 +267,15 @@ soaf_data['source'] = 'entsoe SOAF'
 soaf_data['type'] = 'Installed capacity in MW'
 soaf_data['capacity_definition'] = 'Net capacity'
 soaf_data['source_type'] = 'Other association'
+
+
+
+############ENTSOE statistical data ###############
+
+url_entsoe = 'https://docstore.entsoe.eu/Documents/Publications/Statistics/NGC_2010-2015.xlsx'
+
+filepath_entsoe = f.downloadandcache(url_entsoe, 'Statistics.xls',
+                                     os.path.join('ENTSO-E','Statistical data 2010-2015')
+                                     )
+
+data_entsoe_raw = pd.read_excel(filepath_entsoe)

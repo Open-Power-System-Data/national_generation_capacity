@@ -20,7 +20,18 @@ def createDownloadFolderPath(source):
     folderpath = os.path.join('download', source)
     
     return folderpath
+
+def isZipAndNotExcel(filepath):
     
+    if (os.path.splitext(filepath)[1] in [".xlsx", ".xls"] or not
+    zipfile.is_zipfile(filepath)):
+        
+        return False
+    
+    else:
+        return True
+    
+        
     
 def downloadandcache(url, filename, source):
     """
@@ -46,14 +57,17 @@ def downloadandcache(url, filename, source):
         logger.info('Downloading file %s', filename)
         urllib.request.urlretrieve(url, filepath)
 
-        if zipfile.is_zipfile(filepath):
+        if isZipAndNotExcel(filepath):
             logger.info('Extracting %s into the directory %s', filename, folderpath)
             with zipfile.ZipFile(filepath, "r") as O:
                 O.extractall(folderpath)
             
             return folderpath
+        else:
+            return filepath
+        
     else:
-        if zipfile.is_zipfile(filepath):
+        if isZipAndNotExcel(filepath):
             logger.info('Using extracted zip files from %s', folderpath)
             return folderpath
         else:
