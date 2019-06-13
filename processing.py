@@ -269,7 +269,6 @@ soaf_data['capacity_definition'] = 'Net capacity'
 soaf_data['source_type'] = 'Other association'
 
 
-
 ############ENTSOE statistical data ###############
 
 url_entsoe = 'https://docstore.entsoe.eu/Documents/Publications/Statistics/NGC_2010-2015.xlsx'
@@ -279,3 +278,68 @@ filepath_entsoe = f.downloadandcache(url_entsoe, 'Statistics.xls',
                                      )
 
 data_entsoe_raw = pd.read_excel(filepath_entsoe)
+
+
+dict_energy_source = {'hydro': 'Hydro',
+                      'of which storage': 'Reservoir',
+                      'of which run of river': 'Run-of-river',
+                      'of which pumped storage': 'Pumped storage',
+                      'nuclear': 'Nuclear',
+                      'of which wind': 'Wind',
+                      'of which solar': 'Solar',
+                      'of which biomass': 'Biomass and biogas',
+                      'fossil_fuels': 'Fossil fuels',
+                      'other': 'Other or unspecified energy sources',
+                      "Country": "country",
+                      'fossil_fueals': 'Fossil fuels'}
+
+data_entsoe_raw.rename(columns=dict_energy_source,
+                       inplace=True)
+
+data_entsoe_raw.drop(columns='representativity', inplace=True)
+
+data_entsoe_raw['Differently categorized solar'] = data_entsoe_raw['Solar']
+data_entsoe_raw['Differently categorized wind'] = data_entsoe_raw['Wind']
+data_entsoe_raw['Bioenergy and renewable waste'] = data_entsoe_raw['Biomass and biogas']
+data_entsoe_raw['Differently categorized fossil fuels'] = data_entsoe_raw['Fossil fuels']
+
+
+data_entsoe_raw['Differently categorized hydro'] = (
+        data_entsoe_raw['Hydro']
+        - data_entsoe_raw['Run-of-river']
+        - data_entsoe_raw['Reservoir']
+        - data_entsoe_raw['Pumped storage'])
+
+data_entsoe_raw['Differently categorized renewable energy sources'] = (
+        data_entsoe_raw['renewable']
+        - data_entsoe_raw['Wind']
+        - data_entsoe_raw['Solar']
+        - data_entsoe_raw['Biomass and biogas'])
+
+data_entsoe_raw['Renewable energy sources'] = (
+        data_entsoe_raw['Hydro']
+        + data_entsoe_raw['Wind']
+        + data_entsoe_raw['Solar']
+        + data_entsoe_raw['Bioenergy and renewable waste']
+        + data_entsoe_raw['Differently categorized renewable energy sources'])
+
+data_entsoe_raw['Total'] = (
+        data_entsoe_raw['Renewable energy sources']
+        + data_entsoe_raw['Nuclear']
+        + data_entsoe_raw['Fossil fuels']
+        + data_entsoe_raw['Other or unspecified energy sources'])
+
+data_entsoe = pd.melt(data_entsoe_raw,
+                      id_vars=['country', 'year'],
+                      var_name='energy_source',
+                      value_name='capacity')
+
+data_entsoe['country'].replace('NI', 'GB', inplace=True)
+data_entsoe.loc[data_entsoe['capacity'] < 0, 'capacity'] = 0
+
+data_entsoe['source'] = 'entsoe Statistics'
+data_entsoe['source_type'] = 'Other association'
+data_entsoe['capacity_definition'] = 'Net capacity'
+data_entsoe['type'] = 'Installed capacity in MW'
+
+##############################################################################
