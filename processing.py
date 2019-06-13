@@ -30,6 +30,7 @@ data_raw.index.name = 'technology'
 # Extract energylevels from raw data
 energylevels_raw = data_raw.iloc[:, 0:5]
 
+
 # Delete definition of energy levels from raw data
 data_raw = data_raw.drop(data_raw.columns[[0, 1, 2, 3, 4]], axis=1)
 
@@ -152,29 +153,29 @@ data_eurostat.reset_index(inplace=True)
 
 #########
 
-test = data_eurostat.pivot_table(values='capacity',
+eurostat_pivot = data_eurostat.pivot_table(values='capacity',
                                  index=['country','year'],
                                  columns='technology')
 
 
-test['Differently categorized solar'] = 0
-test['Solar'] = test[['Photovoltaics', 'Concentrated solar power']].sum(axis=1)
-test['Differently categorized wind'] = test['Wind']
+eurostat_pivot['Differently categorized solar'] = 0
+eurostat_pivot['Solar'] = eurostat_pivot[['Photovoltaics', 'Concentrated solar power']].sum(axis=1)
+eurostat_pivot['Differently categorized wind'] = eurostat_pivot['Wind']
 bio_arr = ['Biomass and biogas', 'Other bioenergy and renewable waste']
-test['Bioenergy and renewable waste'] = test[bio_arr].sum(axis=1)
+eurostat_pivot['Bioenergy and renewable waste'] = eurostat_pivot[bio_arr].sum(axis=1)
 res_arr = ['Hydro', 'Wind', 'Solar', 'Geothermal', 'Marine',
            'Bioenergy and renewable waste']
-test['Renewable energy sources'] = test[res_arr].sum(axis=1)
+eurostat_pivot['Renewable energy sources'] = eurostat_pivot[res_arr].sum(axis=1)
 
 
-test['Fossil fuels'] = test['Fossil fuels'] - test['Bioenergy and renewable waste']
-test['Differently categorized fossil fuels'] = test['Fossil fuels']\
-                                             - test['Non-renewable waste']
+eurostat_pivot['Fossil fuels'] = eurostat_pivot['Fossil fuels'] - eurostat_pivot['Bioenergy and renewable waste']
+eurostat_pivot['Differently categorized fossil fuels'] = eurostat_pivot['Fossil fuels']\
+                                             - eurostat_pivot['Non-renewable waste']
 
 total_arr = ['Fossil fuels','Nuclear','Renewable energy sources']
-test['Total'] = test[total_arr].sum(axis=1)
+eurostat_pivot['Total'] = eurostat_pivot[total_arr].sum(axis=1)
 
-data_eurostat = test.stack().reset_index().rename(columns={0: 'capacity'})
+data_eurostat = eurostat_pivot.stack().reset_index().rename(columns={0: 'capacity'})
 
 idx = data_eurostat[data_eurostat['technology'] == 'Fossil fuels'].index
 data_eurostat.drop(idx, inplace=True)
@@ -214,13 +215,13 @@ soafs = [soaf.SoafDataRaw('https://www.entsoe.eu/fileadmin/user_upload/_library/
                          2016)]
 
 
-soaf_data = pd.concat([s.transformed_df for s in soafs])
+data_soaf = pd.concat([s.transformed_df for s in soafs])
 
 # Correct that in the Soaf2015 datatset the year column is 2016 instead of 2015
-soaf_data['year'].replace({2016 : 2015}, inplace=True)
+data_soaf['year'].replace({2016 : 2015}, inplace=True)
 
    
-soaf_unstacked = f.unstackData(soaf_data)
+soaf_unstacked = f.unstackData(data_soaf)
 
 soaf_unstacked['Differently categorized solar'] = soaf_unstacked['Solar']
 
@@ -259,14 +260,14 @@ soaf_unstacked['Total'] = soaf_unstacked[total_arr].sum(axis=1)
 
 
 
-soaf_data = f.restackData(soaf_unstacked)
+data_soaf = f.restackData(soaf_unstacked)
 
-soaf_data.loc[soaf_data['capacity'] < 0, 'capacity'] = 0
+data_soaf.loc[data_soaf['capacity'] < 0, 'capacity'] = 0
 
-soaf_data['source'] = 'entsoe SOAF'
-soaf_data['type'] = 'Installed capacity in MW'
-soaf_data['capacity_definition'] = 'Net capacity'
-soaf_data['source_type'] = 'Other association'
+data_soaf['source'] = 'entsoe SOAF'
+data_soaf['type'] = 'Installed capacity in MW'
+data_soaf['capacity_definition'] = 'Net capacity'
+data_soaf['source_type'] = 'Other association'
 
 
 ############ENTSOE statistical data ###############
@@ -343,3 +344,21 @@ data_entsoe['capacity_definition'] = 'Net capacity'
 data_entsoe['type'] = 'Installed capacity in MW'
 
 ##############################################################################
+
+data = pd.concat([data_opsd, data_eurostat, data_soaf, data_entsoe], sort=False)
+data['comment'] = data['comment'].fillna('').astype(str)
+
+col_order = ['technology', 'source', 'source_type', 'year', 'type', 'country',
+             'capacity_definition', 'capacity', 'comment']
+
+data = data[col_order]
+
+energy_source_mapping = pd.read_csv('energy_source_mapping.csv', index_col ='name')
+energy_source_mapping.replace({0: False, 1: True}, inplace=True)
+
+data = data.merge(energy_source_mapping,
+                  left_on='technology',
+                  right_index=True,
+                  how='left')
+
+###############################################################################
