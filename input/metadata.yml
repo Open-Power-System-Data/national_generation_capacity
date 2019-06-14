@@ -2,7 +2,7 @@ name: opsd-national_generation_capacity
 title: National generation capacity
 description: Aggregated generation capacity by technology and country
 longDescription: This data package comprises technology-specific aggregated generation capacities for European countries. The generation capacities are consistently categorized based on fuel and technology. For each European country, various references are used ranging from international (e.g. ENTSOE or EUROSTAT) to national sources from e.g. regulatory authorities. The input data is processed in the script linked below. 
-profile: tabular_data_package
+profile: tabular-data-package
 _external: false
 _metadataVersion: 1.2
 attribution: "Attribution should be given as follows: Open Power System Data. 2018. Data Package National generation capacity. Version 2019-02-22. https://doi.org/10.25832/national_generation_capacity/2019-02-22. (Primary data from various sources, for a complete list see URL)."
