@@ -353,7 +353,8 @@ col_order = ['technology', 'source', 'source_type', 'year', 'type', 'country',
 
 data = data[col_order]
 
-energy_source_mapping = pd.read_csv('energy_source_mapping.csv', index_col ='name')
+energy_source_mapping = pd.read_csv(os.path.join('input','energy_source_mapping.csv'),
+                                    index_col ='name')
 energy_source_mapping.replace({0: False, 1: True}, inplace=True)
 
 data = data.merge(energy_source_mapping,
