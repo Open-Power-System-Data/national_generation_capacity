@@ -332,7 +332,7 @@ data_entsoe_raw['Total'] = (
 
 data_entsoe = pd.melt(data_entsoe_raw,
                       id_vars=['country', 'year'],
-                      var_name='energy_source',
+                      var_name='technology',
                       value_name='capacity')
 
 data_entsoe['country'].replace('NI', 'GB', inplace=True)
