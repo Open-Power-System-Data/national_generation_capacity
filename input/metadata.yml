@@ -20,7 +20,7 @@ temporal:
     start: '1990'
     end: '2019'
 version: '2019-10-25'
-publicationDate: '2019-10-22'
+publicationDate: '2019-10-25'
 #id: https://doi.org/10.25832/national_generation_capacity/2019-10-25
 homepage: https://data.open-power-system-data.org/national_generation_capacity/2019-10-25
 lastChanges: Updated data for 2019, bugfixes, inclusion of ENTSOE Power Statistics and Transparency Platform
@@ -43,12 +43,16 @@ resources:
     - name: national_generation_capacity
       profile: tabular-data-resource
       title: Statistics of national generation capacities
+      bytes:
+      hash:
       path: national_generation_capacity.xlsx
       format: xlsx
       mediatype: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
     - name: national_generation_capacity_stacked
       profile: tabular-data-resource
       title: Statistics of national generation capacities
+      bytes:
+      hash:
       path: national_generation_capacity_stacked.csv
       format: csv
       mediatype: text/csv
