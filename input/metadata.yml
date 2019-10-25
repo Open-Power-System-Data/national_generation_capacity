@@ -2,10 +2,10 @@ name: opsd-national_generation_capacity
 title: National generation capacity
 description: Aggregated generation capacity by technology and country
 longDescription: This data package comprises technology-specific aggregated generation capacities for European countries. The generation capacities are consistently categorized based on fuel and technology. For each European country, various references are used ranging from international (e.g. ENTSOE or EUROSTAT) to national sources from e.g. regulatory authorities. The input data is processed in the script linked below. 
-profile: tabular_data_package
+profile: tabular-data-package
 _external: false
 _metadataVersion: 1.2
-attribution: "Attribution should be given as follows: Open Power System Data. 2018. Data Package National generation capacity. Version 2019-02-22. https://doi.org/10.25832/national_generation_capacity/2019-02-22. (Primary data from various sources, for a complete list see URL)."
+attribution: "Attribution should be given as follows: Open Power System Data. 2019. Data Package National generation capacity. Version 2019-10-25. https://doi.org/10.25832/national_generation_capacity/2019-10-25. (Primary data from various sources, for a complete list see URL)."
 keywords: 
     - generation capacity
     - conventional generation
@@ -18,12 +18,12 @@ spatial:
 temporal:
     start: '1990'
     end: '2019'
-version: '2019-02-22'
-publicationDate: '2019-02-22'
-id: https://doi.org/10.25832/national_generation_capacity/2019-02-22
-homepage: https://data.open-power-system-data.org/national_generation_capacity/2019-02-22
-lastChanges: Updated data for 2018, bugfixes
-documentation: https://github.com/Open-Power-System-Data/national_generation_capacity/blob/2019-02-22/main.ipynb
+version: '2019-10-25'
+publicationDate: '2019-10-22'
+id: https://doi.org/10.25832/national_generation_capacity/2019-10-25
+homepage: https://data.open-power-system-data.org/national_generation_capacity/2019-10-25
+lastChanges: Updated data for 2019, bugfixes, inclusion of ENTSOE Power Statistics and Transparency Platform
+documentation: https://github.com/Open-Power-System-Data/national_generation_capacity/blob/2019-10-25/main.ipynb
 contributors:
     - title: Mario Kendziorski
       email: mak@wip.tu-berlin.de
@@ -121,14 +121,18 @@ resources:
               description: Technology (aggregation or classification by fuel and technology)
               type: boolean
 sources:
-    - title: ENTSOE SO&AF
-      path: https://www.entsoe.eu/outlooks/maf/Pages/default.aspx
-    - title: ENTSOE Statistics
-      path: https://www.entsoe.eu/db-query/miscellaneous/net-generating-capacity
     - title: EUROSTAT
       path: http://ec.europa.eu/eurostat/product?code=nrg_113a&mode=view
     - title: UN Statistical Office
       path: http://data.un.org/Data.aspx?d=EDATA&f=cmID%3AEC
+    - title: ENTSOE Statistics
+      path: https://www.entsoe.eu/db-query/miscellaneous/net-generating-capacity
+    - title: ENTSOE Power Statistics
+      path: https://www.entsoe.eu/data/power-stats/net-gen-capacity/
+    - title: ENTSOE SO&AF
+      path: https://www.entsoe.eu/outlooks/maf/Pages/default.aspx
+    - title: ENTSOE Transparency Platform
+      path: https://transparency.entsoe.eu/generation/r2/installedGenerationCapacityAggregation/show      
     - title: e-control
       path: http://www.e-control.at/statistik/strom/bestandsstatistik
     - title: ELIA
@@ -179,6 +183,8 @@ sources:
       path: https://www.rte-france.com/en/document/overview-electrical-energy-france-march-2017
     - title: RTE 2018
       path: https://www.rte-france.com/en/document/overview-electrical-energy-france-march-2018
+    - title: RTE 2019
+      path: https://www.rte-france.com/en/document/overview-electrical-energy-france-march-2019
     - title: RAE 2012
       path: http://www.rae.gr/site/file/system/docs/ActionReports/national_2012
     - title: RAE 2013
@@ -191,12 +197,16 @@ sources:
       path: http://www.rae.gr/site/file/system/docs/ActionReports/national_2016
     - title: RAE 2017
       path: http://www.rae.gr/site/file/system/docs/ActionReports/national_2017
+    - title: RAE 2018
+      path: http://www.rae.gr/site/file/system/docs/ActionReports/national_2018
     - title: Croation Transmission System operator (HOPS) 2013
       path: https://www.hops.hr/wps/wcm/connect/fbb3e297-dbfc-437a-bd36-458e02b9e7e4/Temeljni+podaci+2013.pdf?MOD=AJPERES
     - title: Croation Transmission System operator (HOPS) 2015
       path: http://www.hops.hr/wps/wcm/connect/5843dd4a-3e05-4ef4-ab14-f8b4934f71c1/Temeljni+podaci+2015.pdf?MOD=AJPERES
     - title: Croation Transmission System operator (HOPS) 2017
       path: https://www.hops.hr/wps/wcm/connect/223c7f2f-39a6-4bf7-b17e-cd3e78de74d1/HOPS+GI+2017+-++za+web.pdf?MOD=AJPERES
+    - title: Croation Transmission System operator (HOPS) 2018
+      path: https://www.hops.hr/page-file/x2VUqipcFKEnEgg50EV391/annual-report-hops/GI%202018%20unutarnje%20-%209-7-19%20web.pdf
     - title: Mavir
       path: https://www.mavir.hu/web/mavir-en/installed-generation-capacity
     - title: Mavir 2013
@@ -219,13 +229,13 @@ sources:
       path: http://data.csb.gov.lv/pxweb/en/vide/vide__energetika__ikgad/?tablelist=true&rxid=15bc83eb-4fcc-444c-b6e7-86ddc5b9a187
     - title: Tennet NL
       path: http://energieinfo.tennet.org/dataexport/exporteerdatacountry.aspx?id=InstalledCapacity
-    - title: Tennet 2018
+    - title: Tennet 2019
       path: https://www.tennet.org/english/operational_management/export_data.aspx?exporttype=Opgesteldverm
     - title: Energy Ministry NO 2013
       path:  https://www.regjeringen.no/globalassets/upload/oed/faktaheftet/facts_energy_water.pdf
     - title: Energy Ministry NO 2015
       path: https://www.regjeringen.no/contentassets/fd89d9e2c39a4ac2b9c9a95bf156089a/facts_2015_energy_and_water_path.pdf
-    - title: Energy Ministry NO 2017
+    - title: Energy Ministry NO 2019
       path: https://energifaktanorge.no/en/norsk-energiforsyning/kraftproduksjon/
     - title: CIRE
       path: http://www.rynek-energii-elektrycznej.cire.pl/st,33,207,tr,75,0,0,0,0,0,podstawowe-dane.html
@@ -239,6 +249,8 @@ sources:
       path: http://www.ren.pt/files/2015-05/2015-05-04145306_f7664ca7-3a1a-4b25-9f46-2056eef44c33$$72f445d4-8e31-416a-bd01-d7b980134d0f$$ee3c56e5-6d14-4aa0-ac1f-ca5006917e03$$storage_image$$pt$$1.pdf
     - title: REN 2018
       path: https://www.ren.pt/files/2018-06/2018-06-07141326_7a820a40-3b49-417f-a962-6c4d7f037353$$7319a1b4-3b92-4c81-98d7-fea4bfefafcd$$ecd34e02-2b1e-4079-afb6-2a4bfbccd4a2$$File$$pt$$1.pdf
+    - title: REN 2019
+      path: https://www.ren.pt/files/2019-04/2019-04-29105436_7a820a40-3b49-417f-a962-6c4d7f037353$$7319a1b4-3b92-4c81-98d7-fea4bfefafcd$$5421f79d-11b2-4209-a7d9-956bc1d10bd2$$File$$pt$$1.pdf
     - title: Anre 2014
       path: http://www.anre.ro/download.php?f=ga%2BCig%3D%3D&t=vdeyut7dlcecrLbbvbY%3D
     - title: Anre 2015
@@ -259,5 +271,7 @@ sources:
       path: https://slovak.statistics.sk/PortalTraffic/fileServlet?Dokument=6d8bdb1f-528c-41b3-9564-0ff365c98bb8
     - title: Statistical Office of Slovakia 2015
       path: https://slovak.statistics.sk/PortalTraffic/fileServlet?Dokument=00248658-7e49-418d-a7f5-2b8c243c2135
+    - title: Statistical Office of Slovakia 2017
+      path: https://slovak.statistics.sk/PortalTraffic/fileServlet?Dokument=0d9b0514-dfc8-4fd4-abff-199a4cc5dd32
     - title: Department of Energy & Climate Change UK
       path: https://www.gov.uk/government/statistics/electricity-chapter-5-digest-of-united-kingdom-energy-statistics-dukes
