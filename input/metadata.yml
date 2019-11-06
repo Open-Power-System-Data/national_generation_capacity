@@ -2,7 +2,7 @@ hide: yes
 name: opsd-national_generation_capacity
 title: National generation capacity
 description: Aggregated generation capacity by technology and country
-longDescription: This data package comprises technology-specific aggregated generation capacities for European countries. The generation capacities are consistently categorized based on fuel and technology. For each European country, various references are used ranging from international (e.g. ENTSOE or EUROSTAT) to national sources from e.g. regulatory authorities. The input data is processed in the script linked below. 
+longDescription: This data package comprises technology-specific aggregated generation capacities for European countries. The generation capacities are consistently categorized based on fuel and technology. For each European country, various references are used ranging from international (e.g. ENTSO-E or EUROSTAT) to national sources from e.g. regulatory authorities. The input data is processed in the script linked below. 
 profile: tabular-data-package
 _external: false
 _metadataVersion: 1.2
@@ -23,7 +23,7 @@ version: '2019-10-25'
 publicationDate: '2019-10-25'
 #id: https://doi.org/10.25832/national_generation_capacity/2019-10-25
 homepage: https://data.open-power-system-data.org/national_generation_capacity/2019-10-25
-lastChanges: Updated data for 2019, bugfixes, inclusion of ENTSOE Power Statistics and Transparency Platform
+lastChanges: Updated data for 2019, bugfixes, inclusion of ENTSO-E Power Statistics and Transparency Platform
 documentation: https://github.com/Open-Power-System-Data/national_generation_capacity/blob/2019-10-25/main.ipynb
 contributors:
     - title: Mario Kendziorski
@@ -126,13 +126,13 @@ sources:
       path: http://ec.europa.eu/eurostat/product?code=nrg_113a&mode=view
     - title: UN Statistical Office
       path: http://data.un.org/Data.aspx?d=EDATA&f=cmID%3AEC
-    - title: ENTSOE Statistics
+    - title: ENTSO-E Statistics
       path: https://www.entsoe.eu/db-query/miscellaneous/net-generating-capacity
-    - title: ENTSOE Power Statistics
+    - title: ENTSO-E Power Statistics
       path: https://www.entsoe.eu/data/power-stats/net-gen-capacity/
-    - title: ENTSOE SO&AF
+    - title: ENTSO-E SO&AF
       path: https://www.entsoe.eu/outlooks/maf/Pages/default.aspx
-    - title: ENTSOE Transparency Platform
+    - title: ENTSO-E Transparency Platform
       path: https://transparency.entsoe.eu/generation/r2/installedGenerationCapacityAggregation/show      
     - title: e-control
       path: http://www.e-control.at/statistik/strom/bestandsstatistik

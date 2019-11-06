@@ -14,8 +14,8 @@ The raw data is based on an extensive research of available national and interna
 The cross-national data sources are:
 
 - [EUROSTAT "Annual data on electricity infrastructure"](http://ec.europa.eu/eurostat/product?code=nrg_113a&mode=view)
-- [ENTSOE "Net generating capacity"](https://www.entsoe.eu/db-query/miscellaneous/net-generating-capacity)
-- [ENTSOE "Scenario Outlook & Adequacy Forecasts"](https://www.entsoe.eu/outlooks/maf/Pages/default.aspx)
+- [ENTSO-E "Net generating capacity"](https://www.entsoe.eu/db-query/miscellaneous/net-generating-capacity)
+- [ENTSO-E "Scenario Outlook & Adequacy Forecasts"](https://www.entsoe.eu/outlooks/maf/Pages/default.aspx)
 
 Beside this, the data is complemented by national sources, which includes national statistical offices, ministries, regulatory authorities, transmission system operators, as well as other associations. All data sources are listed in the generated `datapackage.json` file including their link.  
 
