@@ -1,0 +1,17 @@
+name: national_generation_capacity
+
+channels:
+  - conda-forge
+  - anaconda
+
+dependencies:
+  - python=3.7
+  - notebook
+  - pandas
+  - numpy
+  - openpyxl
+  - xlrd
+  - yaml
+
+
+
