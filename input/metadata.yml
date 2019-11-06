@@ -15,7 +15,7 @@ keywords:
     - Europe
 spatial:
     location: Austria, Belgium, Bulgaria, Switzerland, Czech Republic, Germany, Denmark, Estonia, Spain, Finland, France, Greece, Hungary, Irland, Italy, Lithuania, Luxemburg, Latvia, the Netherlands, Norway, Poland, Portugal, Romania, Sweden, Slovenia, Slovakia, United Kingdom
-    resolution: national aggregates
+    resolution: National aggregates
 temporal:
     start: '1990'
     end: '2019'
