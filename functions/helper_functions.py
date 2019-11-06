@@ -3,6 +3,7 @@ import os.path
 import urllib.parse
 import urllib.request
 import zipfile
+import shutil
 from . import logger
 
 
@@ -101,3 +102,19 @@ def checkIfEmptyAndSetDefault(df, technology, default=0):
         return default
     else:
         return sub_df.values[0]
+
+
+def copydir(source, dest):
+    """Copy a directory structure overwriting existing files"""
+    for root, dirs, files in os.walk(source):
+        if not os.path.isdir(root):
+            os.makedirs(root)
+
+        for file in files:
+            rel_path = root.replace(source, '').lstrip(os.sep)
+            dest_path = os.path.join(dest, rel_path)
+
+            if not os.path.isdir(dest_path):
+                os.makedirs(dest_path)
+
+            shutil.copyfile(os.path.join(root, file), os.path.join(dest_path, file))
