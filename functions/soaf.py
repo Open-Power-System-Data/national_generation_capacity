@@ -50,7 +50,7 @@ class SoafDataRaw:
         
         self.source = 'ENTSO-E'
         self.year = year
-        self.sourcefolder = 'SO&AF {year}'.format(year=year)
+        self.sourcefolder = os.path.join('SO&AF', str(year))
         
         self.folderpath = f.downloadandcache(url,
                                              zipfile,
