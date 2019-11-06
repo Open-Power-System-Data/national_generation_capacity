@@ -118,3 +118,15 @@ def copydir(source, dest):
                 os.makedirs(dest_path)
 
             shutil.copyfile(os.path.join(root, file), os.path.join(dest_path, file))
+
+def make_archive(source, destination):
+        base = os.path.basename(destination)
+        name = base.split('.')[0]
+        format = base.split('.')[1]
+        archive_from = os.path.dirname(source)
+        archive_to = os.path.basename(source.strip(os.sep))
+        print(source, destination, archive_from, archive_to)
+        shutil.make_archive(name, format, archive_from, archive_to)
+        filename = '%s.%s'%(name,format)
+        shutil.move(filename, destination)
+        print("Zipped " + name + " to " + filename)
