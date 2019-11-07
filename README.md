@@ -1,31 +1,13 @@
+# Aggregated Generation Capacity by Technology and Country
+This is data package of aggregated generation capacities for European countries. It includes generation capacities for nuclear, fossil and renewable fuels on an aggregated and, if possible, disaggregated technology levels.
 
-# Open Power System Data: Aggregated Generation Capacity by Technology and Country
+See the [main Jupter notebook](main.ipynb) for further details.
 
-## About this data package
+## Preparation
 
-This is data package of aggregated generation capacities for European countries. It includes generation capacities for nuclear, fossil and renewable fuels on an aggregated and, if possible, disaggregated technology levels. The data mostly reflects the years 2013 and 2014.
-
-Its final output is a list of national generation capacities differentiated by input fuels and technologies, as well as by different data sources.
-
-## Data Sources
-
-The raw data is based on an extensive research of available national and international statistics. Due to the diverse structure of data sources, a compiled and structured dataset is used as input for further processing. Additionally, three cross-national data sources are considered to complement the national data sources.
-
-The cross-national data sources are:
-
-- [EUROSTAT "Annual data on electricity infrastructure"](http://ec.europa.eu/eurostat/product?code=nrg_113a&mode=view)
-- [ENTSO-E "Net generating capacity"](https://www.entsoe.eu/db-query/miscellaneous/net-generating-capacity)
-- [ENTSO-E "Scenario Outlook & Adequacy Forecasts"](https://www.entsoe.eu/outlooks/maf/Pages/default.aspx)
-
-Beside this, the data is complemented by national sources, which includes national statistical offices, ministries, regulatory authorities, transmission system operators, as well as other associations. All data sources are listed in the generated `datapackage.json` file including their link.  
-
-## Links to Notebooks
-
-The following notebooks are used to process the input data:
-
-- [processing.ipynb](processing.ipynb) - Processing of the input data.
-- [tests.ipynb](tests.ipynb) - Consistency checks and visualization of the dataset.
+To work on the Notebooks locally see the installation instructions in the
+[wiki](https://github.com/Open-Power-System-Data/common/wiki/Tutorial-to-run-OPSD-scripts).
 
 ## License
 
-The scripts in this data package are published under the [MIT license](LICENSE.md).
+This notebook as well as all other documents in this repository is published under the [MIT License](LICENSE.md).
