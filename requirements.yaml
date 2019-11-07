@@ -11,7 +11,8 @@ dependencies:
   - numpy
   - openpyxl
   - xlrd
-  - yaml
+  - pyyaml
+  - nb_conda_kernels
 
 
 
