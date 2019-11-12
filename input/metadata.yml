@@ -2,7 +2,7 @@ hide: yes
 name: opsd-national_generation_capacity
 title: National generation capacity
 description: Aggregated generation capacity by technology and country
-longDescription: This data package comprises technology-specific aggregated generation capacities for European countries. The generation capacities are consistently categorized based on fuel and technology. For each European country, various references are used ranging from international (e.g. ENTSO-E or EUROSTAT) to national sources from e.g. regulatory authorities. The input data is processed in the script linked below. 
+longDescription: This data package comprises technology-specific aggregated generation capacities for European countries. The generation capacities are consistently categorized based on fuel and technology. For each European country, various references are used ranging from international (e.g. ENTSOE or EUROSTAT) to national sources from e.g. regulatory authorities. The input data is processed in the script linked below. 
 profile: tabular-data-package
 _external: false
 _metadataVersion: 1.2
@@ -15,7 +15,7 @@ keywords:
     - Europe
 spatial:
     location: Austria, Belgium, Bulgaria, Switzerland, Czech Republic, Germany, Denmark, Estonia, Spain, Finland, France, Greece, Hungary, Irland, Italy, Lithuania, Luxemburg, Latvia, the Netherlands, Norway, Poland, Portugal, Romania, Sweden, Slovenia, Slovakia, United Kingdom
-    resolution: National aggregates
+    resolution: national aggregates
 temporal:
     start: '1990'
     end: '2019'
@@ -23,7 +23,7 @@ version: '2019-10-25'
 publicationDate: '2019-10-25'
 #id: https://doi.org/10.25832/national_generation_capacity/2019-10-25
 homepage: https://data.open-power-system-data.org/national_generation_capacity/2019-10-25
-lastChanges: Updated data for 2019, bugfixes, inclusion of ENTSO-E Power Statistics and Transparency Platform
+lastChanges: Updated data for 2019, bugfixes, inclusion of ENTSOE Power Statistics and Transparency Platform
 documentation: https://github.com/Open-Power-System-Data/national_generation_capacity/blob/2019-10-25/main.ipynb
 contributors:
     - title: Mario Kendziorski
@@ -126,153 +126,63 @@ sources:
       path: http://ec.europa.eu/eurostat/product?code=nrg_113a&mode=view
     - title: UN Statistical Office
       path: http://data.un.org/Data.aspx?d=EDATA&f=cmID%3AEC
-    - title: ENTSO-E Statistics
+    - title: ENTSOE Statistics
       path: https://www.entsoe.eu/db-query/miscellaneous/net-generating-capacity
-    - title: ENTSO-E Power Statistics
+    - title: ENTSOE Power Statistics
       path: https://www.entsoe.eu/data/power-stats/net-gen-capacity/
-    - title: ENTSO-E SO&AF
+    - title: ENTSOE SO&AF
       path: https://www.entsoe.eu/outlooks/maf/Pages/default.aspx
-    - title: ENTSO-E Transparency Platform
+    - title: ENTSOE Transparency Platform
       path: https://transparency.entsoe.eu/generation/r2/installedGenerationCapacityAggregation/show      
     - title: e-control
       path: http://www.e-control.at/statistik/strom/bestandsstatistik
     - title: ELIA
       path: http://www.elia.be/en/grid-data/power-generation/generating-facilities
     - title: TSO Bulgaria
-      path: http://www.tso.bg/uploads/file/Profile/en/ESO_Annual_Report_2012_en.pdf
+      path: http://www.eso.bg/?did=79#Reports
     - title: BFE
-      path: http://www.bfe.admin.ch/themen/00526/00541/00542/00630/index.html?dossier_id=00765
+      path: https://www.bfe.admin.ch/bfe/de/home/versorgung/statistik-und-geodaten/energiestatistiken/elektrizitaetsstatistik.html
     - title: ERU
-      path: http://www.eru.cz/en/elektrina/statistika-a-sledovani-kvality/rocni-zpravy-o-provozu
-    - title: ERU 2013
-      path: https://www.eru.cz/documents/10540/462820/Annual_report_electricity_2013.pdf/34a35d27-9c58-4c79-99d1-f0fbc5eac06a
-    - title: ERU 2014
-      path: https://www.eru.cz/documents/10540/462820/Annual_report_electricity_2014.pdf/f23d80b5-668a-42c0-9d04-1a19556c9c58
-    - title: ERU 2015
-      path: https://www.eru.cz/documents/10540/462820/Annual_report_electricity_2015.pdf/2548f33b-7964-4537-8b97-3943c7d83854
-    - title: ERU 2016
-      path: https://www.eru.cz/documents/10540/462820/Annual_report_electricity_2016.pdf/bfbc88b7-a814-498f-99bf-98b50148c805
-    - title: ERU 2017
-      path: https://www.eru.cz/documents/10540/4580209/Yearly_report_electricity_2017.pdf/a4042a98-8750-4524-bb3c-f172ecba2f3b
+      path: https://www.eru.cz/en/zpravy-o-provozu-elektrizacni-soustavy
     - title: BMWi
-      path: http://www.bmwi.de/BMWi/Redaktion/Binaer/Energiedaten/energietraeger10-stromerzeugungskapazitaeten-bruttostromerzeugung,property=blob,bereich=bmwi2012,sprache=de,rwb=true.xls
+      path: https://www.bmwi.de/Redaktion/DE/Artikel/Energie/energiedaten-gesamtausgabe.html
     - title: DEA
-      path: http://www.ens.dk/en/info/facts-figures/energy-statistics-indicators-energy-efficiency/annual-energy-statistics
+      path: https://ens.dk/en/our-services/statistics-data-key-figures-and-energy-maps/annual-and-monthly-statistics
     - title: Statistics Estonia
       path: http://pub.stat.ee/px-web.2001/Dialog/varval.asp?ma=FE032&ti=CAPACITY+AND+PRODUCTION+OF+POWER+PLANTS&path=../I_Databas/Economy/07Energy/02Energy_consumption_and_production/01Annual_statistics/&lang=1
     - title: REE
       path: http://www.ree.es/en/statistical-data-of-spanish-electrical-system/national-indicators/national-indicators
-    - title: Statistics Finland
-      path: http://pxnet2.stat.fi/PXWeb/pxweb/en/StatFin/StatFin__ene__ehk/240_ehk_tau_112_en.px/table/tableViewLayout1/?rxid=31077c25-37e4-480e-81e6-49a66cbe4dc2
-    - title: Energiavirasto
-      path: https://www.energiavirasto.fi/voimalaitosrekisteri
-    - title: Energiavirasto 2014
-      path: https://www.energiavirasto.fi/fi/paatokset-ja-lausunnot-2012?p_p_auth=EnMj6Etp&p_p_id=101&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&_101_struts_action=%2Fasset_publisher%2Fview_content&_101_assetEntryId=147779&_101_type=document&redirect=https%3A%2F%2Fwww.energiavirasto.fi%2Ffi%2Fhome%3Fp_p_id%3D3%26p_p_lifecycle%3D0%26p_p_state%3Dmaximized%26p_p_mode%3Dview%26_3_keywords%3DVoimalaitosrekisteri%26_3_struts_action%3D%252Fsearch%252Fsearch%26_3_redirect%3D%252Ffi%252Fweb%252Fguest%252F
-    - title: Energiavirasto 2018
-      path: https://www.energiavirasto.fi/fi/home?p_p_auth=0ThAEUOH&p_p_id=101&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&_101_struts_action=%2Fasset_publisher%2Fview_content&_101_assetEntryId=1915101&_101_type=document&redirect=https%3A%2F%2Fwww.energiavirasto.fi%2Ffi%2Fhome%3Fp_p_id%3D3%26p_p_lifecycle%3D0%26p_p_state%3Dmaximized%26p_p_mode%3Dview%26_3_entryClassName%3D%26_3_modifiedto%3D%26_3_groupId%3D0%26_3_modifiedselection%3D0%26_3_keywords%3DVoimalaitosrekisteri%2B2019%26_3_documentsSearchContainerPrimaryKeys%3D20_PORTLET_147777%252C20_PORTLET_555330%252C20_PORTLET_727704%252C20_PORTLET_458833%252C20_PORTLET_534265%252C20_PORTLET_588222%252C20_PORTLET_335003%252C20_PORTLET_391895%252C15_PORTLET_10179_FIELD_102999%252C15_PORTLET_10179_FIELD_104891%252C20_PORTLET_415071%252C20_PORTLET_415184%252C20_PORTLET_111023%252C20_PORTLET_556880%252C20_PORTLET_563482%26_3_cur%3D1%26_3_struts_action%3D%252Fsearch%252Fsearch%26_3_format%3D%26_3_modifiedfrom%3D%26_3_formDate%3D1550679648106%26_3_modified%3D
-    - title: Energiavirasto 2019
-      path: https://www.energiavirasto.fi/fi/home?p_p_auth=0ThAEUOH&p_p_id=101&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&_101_struts_action=%2Fasset_publisher%2Fview_content&_101_assetEntryId=2661862&_101_type=document&redirect=https%3A%2F%2Fwww.energiavirasto.fi%2Ffi%2Fhome%3Fp_p_id%3D3%26p_p_lifecycle%3D0%26p_p_state%3Dmaximized%26p_p_mode%3Dview%26_3_entryClassName%3D%26_3_modifiedto%3D%26_3_groupId%3D0%26_3_modifiedselection%3D0%26_3_keywords%3DVoimalaitosrekisteri%2B2019%26_3_documentsSearchContainerPrimaryKeys%3D20_PORTLET_147777%252C20_PORTLET_555330%252C20_PORTLET_727704%252C20_PORTLET_458833%252C20_PORTLET_534265%252C20_PORTLET_588222%252C20_PORTLET_335003%252C20_PORTLET_391895%252C15_PORTLET_10179_FIELD_102999%252C15_PORTLET_10179_FIELD_104891%252C20_PORTLET_415071%252C20_PORTLET_415184%252C20_PORTLET_111023%252C20_PORTLET_556880%252C20_PORTLET_563482%26_3_cur%3D1%26_3_struts_action%3D%252Fsearch%252Fsearch%26_3_format%3D%26_3_modifiedfrom%3D%26_3_formDate%3D1550679648106%26_3_modified%3D
     - title: RTE
-      path: https://www.services-rte.com/en/view-data-published-by-rte/production-installed-capacity.html
-    - title: RTE 2014
-      path: http://www.rte-france.com/en/document/overview-electrical-energy-france-march-2014
-    - title: RTE 2015
-      path: https://www.rte-france.com/en/document/overview-electrical-energy-france-march-2015
-    - title: RTE 2016
-      path: https://www.rte-france.com/en/document/overview-electrical-energy-france-march-2016
-    - title: RTE 2017
-      path: https://www.rte-france.com/en/document/overview-electrical-energy-france-march-2017
-    - title: RTE 2018
-      path: https://www.rte-france.com/en/document/overview-electrical-energy-france-march-2018
-    - title: RTE 2019
-      path: https://www.rte-france.com/en/document/overview-electrical-energy-france-march-2019
-    - title: RAE 2012
-      path: http://www.rae.gr/site/file/system/docs/ActionReports/national_2012
-    - title: RAE 2013
-      path: http://www.rae.gr/site/file/system/docs/ActionReports/national_2013
-    - title: RAE 2014
-      path: http://www.rae.gr/site/file/system/docs/ActionReports/national_2014
-    - title: RAE 2015
-      path: http://www.rae.gr/site/file/system/docs/ActionReports/national_2015
-    - title: RAE 2016
-      path: http://www.rae.gr/site/file/system/docs/ActionReports/national_2016
-    - title: RAE 2017
-      path: http://www.rae.gr/site/file/system/docs/ActionReports/national_2017
-    - title: RAE 2018
-      path: http://www.rae.gr/site/file/system/docs/ActionReports/national_2018
-    - title: Croation Transmission System operator (HOPS) 2013
-      path: https://www.hops.hr/wps/wcm/connect/fbb3e297-dbfc-437a-bd36-458e02b9e7e4/Temeljni+podaci+2013.pdf?MOD=AJPERES
-    - title: Croation Transmission System operator (HOPS) 2015
-      path: http://www.hops.hr/wps/wcm/connect/5843dd4a-3e05-4ef4-ab14-f8b4934f71c1/Temeljni+podaci+2015.pdf?MOD=AJPERES
-    - title: Croation Transmission System operator (HOPS) 2017
-      path: https://www.hops.hr/wps/wcm/connect/223c7f2f-39a6-4bf7-b17e-cd3e78de74d1/HOPS+GI+2017+-++za+web.pdf?MOD=AJPERES
-    - title: Croation Transmission System operator (HOPS) 2018
-      path: https://www.hops.hr/page-file/x2VUqipcFKEnEgg50EV391/annual-report-hops/GI%202018%20unutarnje%20-%209-7-19%20web.pdf
+      path: https://www.services-rte.com/en/view-data-published-by-rte/production-installed-capacity.html  
+    - title: Statistics Finland
+      path: http://pxnet2.stat.fi/PXWeb/pxweb/en/StatFin_Passiivi/StatFin_Passiivi__ene__ehk/statfinpas_ehk_pxt_904_201500_en.px/
+    - title: Department of Energy & Climate Change UK
+      path: https://www.gov.uk/government/statistics/electricity-chapter-5-digest-of-united-kingdom-energy-statistics-dukes
+    - title: REA
+      path: http://www.rae.gr/site/en_US/categories_new/about_rae/actions/reports_national.csp
+    - title: HOPS
+      path: https://www.hops.hr/en/basic-data
     - title: Mavir
-      path: https://www.mavir.hu/web/mavir-en/installed-generation-capacity
-    - title: Mavir 2013
-      path: http://www.mavir.hu/documents/10262/188569160/BT_terv_2013_11_12_EN/ea873e22-bf88-4ee4-8a00-db09030bbb34
-    - title: Mavir 2014
-      path: http://www.mavir.hu/documents/10262/188569160/BT_terv_2014/9946a7a2-38ec-4794-9d7f-96a7a927d1b9
+      path: https://www.mavir.hu/hu/web/mavir-en/installed-generation-capacity
     - title: Eirgrid
-      path: http://www.soni.ltd.uk/media/documents/Operations/CapacityStatements/All%20Island%20Generation%20Capacity%20Statement%202015.%20-%202024..pdf
-    - title: Terna 2013
-      path: http://download.terna.it/terna/0000/0216/17.XLSX
-    - title: Terna 2014
-      path: http://download.terna.it/terna/0000/0216/16.XLSX 
-    - title: Litgrid
-      path: http://www.litgrid.eu/index.php/power-system/power-system-information/generation-capacity/546
-    - title: ILR 
-      path: http://www.ilr.public.lu/electricite/statistiques/evolution_centrales-2008-2014.pdf
+      path: http://www.eirgridgroup.com/library/
+    - title: Terna
+      path: https://www.terna.it/en/electric-system/transparency-report/installed-capacity
     - title: Central Statistical Bureau of Latvia
-      path: http://data.csb.gov.lv/ErrorGeneral.aspx?aspxerrorpath=/pxweb/en/vide/vide__ikgad__energetika/EN0130.px/
-    - title: Central Statistical Bureau of Latvia 2018
-      path: http://data.csb.gov.lv/pxweb/en/vide/vide__energetika__ikgad/?tablelist=true&rxid=15bc83eb-4fcc-444c-b6e7-86ddc5b9a187
-    - title: Tennet NL
-      path: http://energieinfo.tennet.org/dataexport/exporteerdatacountry.aspx?id=InstalledCapacity
-    - title: Tennet 2019
-      path: https://www.tennet.org/english/operational_management/export_data.aspx?exporttype=Opgesteldverm
-    - title: Energy Ministry NO 2013
-      path:  https://www.regjeringen.no/globalassets/upload/oed/faktaheftet/facts_energy_water.pdf
-    - title: Energy Ministry NO 2015
-      path: https://www.regjeringen.no/contentassets/fd89d9e2c39a4ac2b9c9a95bf156089a/facts_2015_energy_and_water_path.pdf
-    - title: Energy Ministry NO 2019
-      path: https://energifaktanorge.no/en/norsk-energiforsyning/kraftproduksjon/
+      path: http://data1.csb.gov.lv/pxweb/en/vide/vide__energetika__ikgad/?tablelist=true
+    - title: Tennet
+      path: https://www.tennet.org/english/operational_management/export_data.aspx
+    - title: Statistics Norway
+      path: https://www.ssb.no/en/energi-og-industri/statistikker/elektrisitet/aar
     - title: CIRE
       path: http://www.rynek-energii-elektrycznej.cire.pl/st,33,207,tr,75,0,0,0,0,0,podstawowe-dane.html
     - title: REN
       path: http://www.ren.pt/en-GB/media/publications/
-    - title: REN 2015
-      path: https://www.ren.pt/files/2016-04/2016-04-04142047_7a820a40-3b49-417f-a962-6c4d7f037353$$7319a1b4-3b92-4c81-98d7-fea4bfefafcd$$fe7585fb-f92a-49f7-9574-43f66d7223c6$$File$$pt$$1.pdf
-    - title: REN 2016
-      path: https://www.ren.pt/files/2017-03/2017-03-24140032_7a820a40-3b49-417f-a962-6c4d7f037353$$7319a1b4-3b92-4c81-98d7-fea4bfefafcd$$912d7292-4d3c-4faa-8a0b-2f750e707e15$$File$$pt$$1.pdf
-    - title: REN 2017
-      path: http://www.ren.pt/files/2015-05/2015-05-04145306_f7664ca7-3a1a-4b25-9f46-2056eef44c33$$72f445d4-8e31-416a-bd01-d7b980134d0f$$ee3c56e5-6d14-4aa0-ac1f-ca5006917e03$$storage_image$$pt$$1.pdf
-    - title: REN 2018
-      path: https://www.ren.pt/files/2018-06/2018-06-07141326_7a820a40-3b49-417f-a962-6c4d7f037353$$7319a1b4-3b92-4c81-98d7-fea4bfefafcd$$ecd34e02-2b1e-4079-afb6-2a4bfbccd4a2$$File$$pt$$1.pdf
-    - title: REN 2019
-      path: https://www.ren.pt/files/2019-04/2019-04-29105436_7a820a40-3b49-417f-a962-6c4d7f037353$$7319a1b4-3b92-4c81-98d7-fea4bfefafcd$$5421f79d-11b2-4209-a7d9-956bc1d10bd2$$File$$pt$$1.pdf
-    - title: Anre 2014
-      path: http://www.anre.ro/download.php?f=ga%2BCig%3D%3D&t=vdeyut7dlcecrLbbvbY%3D
-    - title: Anre 2015
-      path: http://www.anre.ro/download.php?f=gq58hQ%3D%3D&t=vdeyut7dlcecrLbbvbY%3D
-    - title: Svensk Energi 2014
-      path: http://www.svenskenergi.se/Global/Statistik/El%C3%A5ret/El%C3%A5ret%202014_slututg%C3%A5va.pdf
-    - title: Svensk Energi 2015
-      path: http://www.svenskenergi.se/Global/Statistik/El%C3%A5ret/el%C3%A5ret2015_160429_web2.pdf
-    - title: Agencija za energijo 2013
-      path: http://www.agen-rs.si/documents/10926/0/Agencija-za-energijo---Energetika-SLO-za-2013-3.pdf/b63d191d-ecbc-4efe-8b91-1e0f80d3272b
-    - title: Agencija za energijo 2014
-      path: http://www.agen-rs.si/documents/10926/38704/Poro%C4%8Dilo/54b1b378-1e76-4d40-8e0d-c30339baa248
-    - title: Agencija za energijo 2015
-      path: http://www.energetika-portal.si/fileadmin/dokumenti/publikacije/agen_e/porae_2015.pdf
-    - title: Statistical Office of Slovakia 2013
-      path: https://slovak.statistics.sk/PortalTraffic/fileServlet?Dokument=bcc9ac82-9eb4-4320-b460-1f5c726db355
-    - title: Statistical Office of Slovakia 2014
-      path: https://slovak.statistics.sk/PortalTraffic/fileServlet?Dokument=6d8bdb1f-528c-41b3-9564-0ff365c98bb8
-    - title: Statistical Office of Slovakia 2015
-      path: https://slovak.statistics.sk/PortalTraffic/fileServlet?Dokument=00248658-7e49-418d-a7f5-2b8c243c2135
-    - title: Statistical Office of Slovakia 2017
-      path: https://slovak.statistics.sk/PortalTraffic/fileServlet?Dokument=0d9b0514-dfc8-4fd4-abff-199a4cc5dd32
-    - title: Department of Energy & Climate Change UK
-      path: https://www.gov.uk/government/statistics/electricity-chapter-5-digest-of-united-kingdom-energy-statistics-dukes
+    - title: ANRE
+      path: https://www.anre.ro/en/about-anre/annual-reports-archive
+    - title: Swedish Energy Agency
+      path: https://www.energimyndigheten.se/en/facts-and-figures/publications/
+    - title: Agencija za energijo
+      path: https://www.agen-rs.si/web/en/publications/-/asset_publisher/TCdo6cWN9Shk/content/te-1?_101_INSTANCE_TCdo6cWN9Shk_redirect=%2Fweb%2Fen%2Fpublications
+    - title: Statistical Office of Slovakia
+      path: https://slovak.statistics.sk/wps/portal/ext/themes/multi/energy/publications   
