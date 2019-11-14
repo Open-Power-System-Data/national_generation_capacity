@@ -168,6 +168,8 @@ sources:
       path: http://www.eirgridgroup.com/library/
     - title: Terna
       path: https://www.terna.it/en/electric-system/transparency-report/installed-capacity
+    - title: Litgrid
+      path: https://www.litgrid.eu/index.php/power-system/power-system-information/generation-capacity/546
     - title: Central Statistical Bureau of Latvia
       path: http://data1.csb.gov.lv/pxweb/en/vide/vide__energetika__ikgad/?tablelist=true
     - title: Tennet
