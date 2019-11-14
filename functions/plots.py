@@ -1,18 +1,9 @@
 import pandas as pd
-import numpy as np
-import os.path
 import math
 
 import bokeh.plotting as plt
-from bokeh.io import output_notebook, curdoc
-from bokeh.layouts import row, column
-from bokeh.models import Callback, ColumnDataSource, FactorRange, Panel, Tabs, Legend, LegendItem
-from bokeh.models.widgets import RangeSlider, MultiSelect, Select, RadioButtonGroup
+from bokeh.models import ColumnDataSource, Legend, LegendItem
 
-data_file = 'national_generation_capacity_stacked.csv'
-filepath = os.path.join('output', data_file)
-data = pd.read_csv(filepath, index_col=0)
-data["capacity"] = data["capacity"]/1000
 
 colormap = {
     'Fossil fuels': 'Black',
@@ -57,6 +48,11 @@ colormap = {
     'renewable': 'Green'
 }
 
+
+energy_levels = ['energy_source_level_0','energy_source_level_1',
+                 'energy_source_level_2', 'energy_source_level_3',
+                 'technology_level']
+
 global_sources = ['EUROSTAT','ENTSO-E SOAF','ENTSO-E Data Portal',
                   'ENTSO-E Transparency Platform','ENTSO-E Power Statistics',
                   'National source']
@@ -67,18 +63,16 @@ def which_source(x):
         return x
     else:
         return 'National source'
-
-oldest_year = min(data["year"])
-newest_year = max(data["year"])
-
-input_co = list(data["country"].unique())
-data["source_new"] = data["source"].apply(which_source)
-energy_levels = ['energy_source_level_0','energy_source_level_1',
-                 'energy_source_level_2', 'energy_source_level_3',
-                 'technology_level']
+    
+def load_opsd_data(filepath):
+    data = pd.read_csv(filepath, index_col=0)
+    data["capacity"] = data["capacity"]/1000
+    data["source_new"] = data["source"].apply(which_source)
+    return data
 
 
-def filter_data_set(input_co, input_year, input_source, level, unique=False):
+
+def filter_data_set(data, input_co, input_year, input_source, level, unique=False):
     
     co_subset = data['country'] == input_co
     y_subset = data['year'].isin(input_year)
@@ -101,15 +95,14 @@ def filter_data_set(input_co, input_year, input_source, level, unique=False):
     else:
         return ret_data
     
-#asdf = filter_data_set('FR', [2015,2016], 'EUROSTAT', 'energy_source_level_2')
 
 def prepare_data(data):
     source_data = pd.pivot_table(data, 
-                              index=('year','source'),
-                              columns='technology',
-                              values='capacity',
-                              aggfunc=sum,
-                              margins=False)
+                                index=('year','source'),
+                                columns='technology',
+                                values='capacity',
+                                aggfunc=sum,
+                                margins=False)
     
     source_data.fillna(0, inplace=True)
     x_axis = list(source_data.index)
@@ -119,9 +112,10 @@ def prepare_data(data):
     return source_data, x_axis
 
 
-def init_plot(level):
+def init_plot(data, level, size=(800,800)):
     
-    ret_data, technologies, years = filter_data_set('DE',
+    ret_data, technologies, years = filter_data_set(data,
+                                                    'DE',
                                                     [2015,2016],
                                                     ['EUROSTAT','ENTSO-E SOAF'],
                                                     level,
@@ -132,12 +126,12 @@ def init_plot(level):
     source = ColumnDataSource(source_data)
     colors = [colormap[t] for t in technologies]
     
-    p = plt.figure(x_range=[], title="Comparison "+level, plot_width=1200, plot_height=800,
+    p = plt.figure(x_range=[], title="Comparison "+level, plot_width=size[0], plot_height=size[1],
                    y_axis_label='GW', toolbar_location="above")
     
     p.x_range.factors = x_axis
     
-    r = p.vbar_stack(technologies, x='index', width=0.8, source=source,# legend_label=technologies,
+    r = p.vbar_stack(technologies, x='index', width=0.8, source=source,
                  color=colors)
     
     p.xaxis.major_label_orientation = math.pi/2
@@ -149,56 +143,6 @@ def init_plot(level):
     return source, p
 
 
-
-sources = []
-plots = []
-
-for level in energy_levels:
-    s, p = init_plot(level)
-    sources.append(s)
-    plots.append(p)
-
-
-
-y_slider = RangeSlider(title="Years", value=(2015,2016), start=oldest_year, end=newest_year, step=1)
-
-m_select = MultiSelect(title="Available Sources:", value=['EUROSTAT','ENTSO-E SOAF'],
-                       options=[(s,s) for s in global_sources])
-
-c_select = Select(title="Country", options=input_co, value='FR')
-
-panels= []
-for p, level in zip(plots, energy_levels):
-    panels.append(Panel(child=p, title=level))
-
-tabs = Tabs(tabs=panels)
-
-wid = [c_select, y_slider, m_select]
-
-def update(attrname, old, new):
-
-    y = y_slider.value
-    y_range = [x for x in range(y[0],y[1]+1)]
-    s_selected = m_select.value
-    co = c_select.value
-        
-    for p, s, l in zip(plots, sources, energy_levels):
-        df = filter_data_set(co, y_range, s_selected, l)
-        source_data, x_axis = prepare_data(df)
-        s.data = source_data
-        p.x_range.factors = x_axis
-
-
-for w in wid:
-    w.on_change('value', update)
-
-rows = row(wid)
-layout = column(rows, tabs)
-
-plt.show(layout)
-
-curdoc().add_root(layout)
-curdoc().title = "Comparison"
 
 
 
